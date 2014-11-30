@@ -16,7 +16,7 @@ Máquina Virtual para utilização
 -------------------------------
 Baixe a máquina virtual no endereço abaixo. A senha é translationfest
 
-https://drive.google.com/file/d/0BzJtYovThzl_ZEdlTVVvQXpWR2c/view?usp=sharing
+https://drive.google.com/file/d/0BzJtYovThzl_ZEdlTVVvQXpWR2c/view?usp=sharing (3,8 Gb)
 
 Instalar as dependências Ubuntu like
 ------------------------------------
