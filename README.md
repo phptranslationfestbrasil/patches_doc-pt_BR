@@ -3,6 +3,12 @@ patches_doc-pt_BR
 
 Patches da documentação php_BR do PHP (https://wiki.php.net/doc/translations/pt_br)
 
+Baixar e instalar o Oracle Virtual Box
+--------------------------------------
+Utilize a página abaixo para instalar o Virtual Box na sua máquina.
+
+https://www.virtualbox.org/wiki/Downloads
+
 Máquina Virtual para utilização
 -------------------------------
 Baixe a máquina virtual no endereço abaixo. A senha é translationfest
@@ -11,7 +17,6 @@ https://drive.google.com/file/d/0BzJtYovThzl_ZEdlTVVvQXpWR2c/view?usp=sharing
 
 Instalar as dependências Ubuntu like
 ------------------------------------
-
 Caso não esteja usando a máquina virtual, utilize o script abaixo para instalar as dependências numa máquina Ubuntu like:
 
     $ wget https://gist.github.com/royopa/599259ebeffa6ab7b1cb/raw/f64590a551ab181bdda086819e6c1828d701c548/build-machine-translation_fest
@@ -26,7 +31,6 @@ Fazer o checkout da documentação
 
 Aplicando o patch na documentação:
 ----------------------------------
-
 Se tiver usando o SVN >= 1.7 é só chamar 
 
     $ svn patch $file
