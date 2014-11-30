@@ -22,7 +22,7 @@ Instalar as dependências Ubuntu like
 ------------------------------------
 Caso não esteja usando a máquina virtual, utilize o script abaixo para instalar as dependências numa máquina Ubuntu like:
 
-    $ wget https://gist.github.com/royopa/599259ebeffa6ab7b1cb/raw/
+    $ wget -O build-machine-translation_fest https://gist.github.com/royopa/599259ebeffa6ab7b1cb/raw/
     $ chmod +x build-machine-translation_fest
     $ ./build-machine-translation_fest
 
