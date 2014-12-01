@@ -38,18 +38,31 @@ Fazer o checkout da documentação
     $ svn co https://svn.php.net/repository/phpdoc/modules/doc-pt_BR
     $ cd doc-pt_BR
 
-Aplicando o patch na documentação:
+Aplicando um patch na documentação:
 ----------------------------------
-Se tiver usando o SVN >= 1.7 é só chamar 
+Para aplicar um patch na sua tradução, utilize um dos comandos abaixo:
+
+Se tiver usando o SVN >= 1.7 é só chamar:
 
     $ svn patch $file
 
-Se não tiver o comando svn patch usem o patch mesmo: 
+Se não tiver o comando svn patch use o comando:
 
     $ patch -p0 < $file
 
-Compilando o manual
+Compilando o manual:
 -------------------
 
-    $ php doc-base/configure.php --enable-xml-details --with-lang=pt_BR
-    $ phd -d doc-base/.manual.xml -o output_dir -f php -P PHP
+Para compilar, existem duas opções. A primeira, que gera os a documentação sem imagens, mas funcional:
+
+```
+php doc-base/configure.php --enable-xml-details --with-lang=pt_BR
+phd -d doc-base/.manual.xml -o output_dir -f xhtml -P PHP
+```
+
+A segunda, gera arquivos no formato php, e depende de mais algumas coisas explicadas em http://doc.php.net/tutorial/local-setup.php:
+
+```
+php doc-base/configure.php --enable-xml-details --with-lang=pt_BR
+phd -d doc-base/.manual.xml -o output_dir -f php -P PHP
+```
