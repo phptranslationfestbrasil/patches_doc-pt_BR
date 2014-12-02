@@ -70,16 +70,24 @@ Gera arquivos no formato php, e depende de outros arquivos explicados em http://
 ```
 $ cd ~/doc-pt_BR/
 $ php doc-base/configure.php --enable-xml-details --with-lang=pt_BR
-$ phd --docbook doc-base/.manual.xml --package PHP --format php --output mydocs_php
+$ phd --docbook doc-base/.manual.xml --package PHP --format php --output mydocsphp_pt_BR
 ```
-Depois de executar os passos acima, utilize o comando abaixo para baixar as dependências que o formato de documentação em php possui:
+Depois de executar os passos acima, utilize os comandos abaixo para baixar as dependências que o formato de documentação em php possui:
 ```
 $ wget https://github.com/php/web-php/archive/master.zip
 $ unzip master.zip
-$ rsync -avzC --timeout=600 --delete --delete-after --exclude='manual/**' --exclude='distributions/**' --exclude='extra/**' --exclude='backend/notes/**' ./web-php-master/ ./mydocs_php/php-web/
+$ rm -rf master.zip
+$ rsync -avzC --timeout=600 --delete --delete-after --exclude='distributions/**' --exclude='extra/**' --exclude='backend/notes/**' ./web-php-master/ ./myphpnet/
+$ rm -rf web-php-master/
 ```
-Agora inicie o servidor web embutido do PHP para acessar a documentação pelo navegador:
+Então mova a pasta da versão da documentação que você criou dentro da pasta que será usada pelo servidor web:
 ```
-$ php -S localhost:8000 -t ./mydocs_php/php-web/
+$ mv mydocsphp_pt_BR/php-web/ myphpnet/manual/pt_BR
 ```
-E acesse a documentação gerada através do endereço http://localhost:8000
+Agora inicie o servidor web do PHP para acessar a documentação pelo navegador:
+```
+$ php -S localhost:8000 -t ./myphpnet/
+```
+E acesse a documentação gerada através do endereço http://localhost:8000/manual/pt_BR/
+
+Veja esse processo rodando aqui: https://asciinema.org/a/14385
