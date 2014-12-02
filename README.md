@@ -50,19 +50,36 @@ Se não tiver o comando svn patch use o comando:
 
     $ patch -p0 < $file
 
-Compilando o manual:
--------------------
+##Compilando o manual
+Para compilar, existem algumas opções:
 
-Para compilar, existem duas opções. A primeira, que gera os a documentação sem imagens, mas funcional:
-
-```
-php doc-base/configure.php --enable-xml-details --with-lang=pt_BR
-phd -d doc-base/.manual.xml -o output_dir -f xhtml -P PHP
-```
-
-A segunda, gera arquivos no formato php, e depende de mais algumas coisas explicadas em http://doc.php.net/tutorial/local-setup.php:
+###Documentação no formato xHMTL
+Gera arquivos no formato xHTML, sem imagens, porém funcional:
 
 ```
-php doc-base/configure.php --enable-xml-details --with-lang=pt_BR
-phd -d doc-base/.manual.xml -o output_dir -f php -P PHP
+$ cd ~/doc-pt_BR/
+$ php doc-base/configure.php --enable-xml-details --with-lang=pt_BR
+$ phd --docbook doc-base/.manual.xml --package PHP --format xhtml --output mydocs_xhtml
+$ cd mydocs_xhtml/php-chunked-xhtml/
+$ ls
 ```
+Veja esse processo rodando aqui: https://asciinema.org/a/14378
+
+###Documentação no formato PHP:
+Gera arquivos no formato php, e depende de outros arquivos explicados em http://doc.php.net/tutorial/local-setup.php:
+```
+$ cd ~/doc-pt_BR/
+$ php doc-base/configure.php --enable-xml-details --with-lang=pt_BR
+$ phd --docbook doc-base/.manual.xml --package PHP --format php --output mydocs_php
+```
+Depois de executar os passos acima, utilize o comando abaixo para baixar as dependências que o formato de documentação em php possui:
+```
+$ wget https://github.com/php/web-php/archive/master.zip
+$ unzip master.zip
+$ rsync -avzC --timeout=600 --delete --delete-after --exclude='manual/**' --exclude='distributions/**' --exclude='extra/**' --exclude='backend/notes/**' ./web-php-master/ ./mydocs_php/php-web/
+```
+Agora inicie o servidor web embutido do PHP para acessar a documentação pelo navegador:
+```
+$ php -S localhost:8000 -t ./mydocs_php/php-web/
+```
+E acesse a documentação gerada através do endereço http://localhost:8000
